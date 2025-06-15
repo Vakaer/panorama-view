@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@photo-sphere-viewer/core": "^5.13.2",
+    "@photo-sphere-viewer/gallery-plugin": "^5.13.2",
+    "@photo-sphere-viewer/markers-plugin": "^5.13.2",
+    "@photo-sphere-viewer/virtual-tour-plugin": "^5.13.2",
     "@tailwindcss/vite": "^4.1.8",
     "@types/node": "^22.15.29",
     "class-variance-authority": "^0.7.1",
