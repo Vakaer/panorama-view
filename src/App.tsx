@@ -22,7 +22,7 @@ const nodes = [
         links: [{ nodeId: '2' }],
         // markers: [markerLighthouse],
         gps: [-120.156479, 25.666725, 3],
-        sphereCorrection: { pan: '60deg' },
+        // sphereCorrection: { pan: '60deg' },
         fisheye: true,moveInertia: true
     },
     {
@@ -34,7 +34,7 @@ const nodes = [
         links: [{ nodeId: '3' }],
         // markers: [markerLighthouse],
         gps: [80.156168, 25.666623, 3],
-        sphereCorrection: { pan: '60deg' },
+        // sphereCorrection: { pan: '60deg' },
     },
     {
         id: '3',
@@ -44,8 +44,8 @@ const nodes = [
         caption: `[2] Outside Area | Daftarkhwan Vantage`,
         links: [{ nodeId: '2' }],
         // markers: [markerLighthouse],
-        gps: [-80.156168, 25.666623, 3],
-        sphereCorrection: { pan: '42deg' },
+        gps: [-80.156168, 25.666623, 2],
+        // sphereCorrection: { pan: '42deg' },
     },
 ];
 
