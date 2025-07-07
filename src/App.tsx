@@ -1,52 +1,49 @@
-import { useEffect, useRef } from 'react';
 import { Viewer } from '@photo-sphere-viewer/core';
-import { VirtualTourPlugin } from '@photo-sphere-viewer/virtual-tour-plugin';
-import { GalleryPlugin } from '@photo-sphere-viewer/gallery-plugin';
-import { MarkersPlugin } from '@photo-sphere-viewer/markers-plugin';
 import '@photo-sphere-viewer/core/index.css';
+import { GalleryPlugin } from '@photo-sphere-viewer/gallery-plugin';
+import '@photo-sphere-viewer/gallery-plugin/index.css';
 import '@photo-sphere-viewer/markers-plugin/index.css';
-import '@photo-sphere-viewer/gallery-plugin/index.css'
+import { VirtualTourPlugin } from '@photo-sphere-viewer/virtual-tour-plugin';
 import '@photo-sphere-viewer/virtual-tour-plugin/index.css';
+import { useEffect, useRef } from 'react';
 
 import './App.css';
 
 const baseUrl = 'https://photo-sphere-viewer-data.netlify.app/assets/';
 
 const nodes = [
-    {
-        id: '1',
-        panorama: '/office-inside.jpg',
-        thumbnail: '/office-inside.jpg',
-        name: 'One',
-        caption: `[1] Floor 3, Algosoft | Daftarkhwan`,
-        links: [{ nodeId: '2' }],
-        // markers: [markerLighthouse],
-        gps: [-120.156479, 25.666725, 3],
-        // sphereCorrection: { pan: '60deg' },
-        fisheye: true,moveInertia: true
-    },
-    {
-        id: '2',
-        panorama: '/office-basement.jpg',
-        thumbnail: '/office-basement.jpg',
-        name: 'Two',
-        caption: `[2] Basement Cafetaria | Daftarkhwan Vantage`,
-        links: [{ nodeId: '3' }],
-        // markers: [markerLighthouse],
-        gps: [80.156168, 25.666623, 3],
-        // sphereCorrection: { pan: '60deg' },
-    },
-    {
-        id: '3',
-        panorama: '/office-outside.jpg',
-        thumbnail: '/office-outside.jpg',
-        name: 'Two',
-        caption: `[2] Outside Area | Daftarkhwan Vantage`,
-        links: [{ nodeId: '2' }],
-        // markers: [markerLighthouse],
-        gps: [-80.156168, 25.666623, 2],
-        // sphereCorrection: { pan: '42deg' },
-    },
+  {
+    id: '1',
+    panorama: '/eiffel-1.jpg',
+    thumbnail: '/eiffel-1.jpg',
+    name: 'One',
+    caption: `[1] Floor 3, Algosoft | Daftarkhwan`,
+    links: [{ nodeId: '2' }],
+    gps: [-120.156479, 25.666725],
+    defaultZoomLvl: 0,
+    zoom: 0
+  },
+  {
+    id: '2',
+    panorama: '/eiffel-2.jpg',
+    thumbnail: '/eiffel-2.jpg',
+    name: 'Two',
+    caption: `[2] Basement Cafetaria | Daftarkhwan Vantage`,
+    links: [
+      { nodeId: '1' },
+      { nodeId: '3' },
+    ],
+    gps: [80.156168, 25.666623],
+  },
+  {
+    id: '3',
+    panorama: '/eiffel-main.jpg',
+    thumbnail: '/eiffel-main.jpg',
+    name: 'Three',
+    caption: `[3] Outside Area | Daftarkhwan Vantage`,
+    links: [{ nodeId: '2' }],
+    gps: [-80.156168, 25.666623],
+  },
 ];
 
 
@@ -64,7 +61,6 @@ function App() {
         navbar: 'zoom move gallery caption fullscreen',
 
         plugins: [
-            MarkersPlugin,
             [GalleryPlugin, {
                 thumbnailSize: { width: 100, height: 100 },
             }],
@@ -76,6 +72,7 @@ function App() {
             }],
         ],
       });
+      viewer.zoom(0);
       viewer.overlay.hide()
       return () => {
         viewer.destroy();
