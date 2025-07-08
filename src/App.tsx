@@ -16,33 +16,31 @@ const nodes = [
     id: '1',
     panorama: '/eiffel-1.jpg',
     thumbnail: '/eiffel-1.jpg',
-    name: 'One',
-    caption: `[1] Floor 3, Algosoft | Daftarkhwan`,
+    name: 'First Level',
+    caption: `[1] First Level | Eiffel Tower`,
     links: [{ nodeId: '2' }],
-    gps: [-120.156479, 25.666725],
-    defaultZoomLvl: 0,
-    zoom: 0
+    gps: [-120.156479, 30.666725]
   },
   {
     id: '2',
     panorama: '/eiffel-2.jpg',
     thumbnail: '/eiffel-2.jpg',
-    name: 'Two',
-    caption: `[2] Basement Cafetaria | Daftarkhwan Vantage`,
+    name: 'Second Level',
+    caption: `[2] Second Level | Eiffel Tower`,
     links: [
-      { nodeId: '1' },
-      { nodeId: '3' },
+      { nodeId: '1', gps: [80.156168, 25.666623] },
+      { nodeId: '3', gps: [-20.156168, 25.666623] },
     ],
     gps: [80.156168, 25.666623],
   },
   {
     id: '3',
-    panorama: '/eiffel-main.jpg',
-    thumbnail: '/eiffel-main.jpg',
-    name: 'Three',
-    caption: `[3] Outside Area | Daftarkhwan Vantage`,
+    panorama: '/eiffel-3.jpg',
+    thumbnail: '/eiffel-3.jpg',
+    name: 'Summit',
+    caption: `[3] Summit | Eiffel Tower`,
     links: [{ nodeId: '2' }],
-    gps: [-80.156168, 25.666623],
+    gps: [-120.156168, -90.666623],
   },
 ];
 
@@ -58,6 +56,8 @@ function App() {
         touchmoveTwoFingers: true,
         mousewheelCtrlKey: false,
         defaultYaw: '45deg',
+        minFov: 80,
+        maxFov: 100,
         navbar: 'zoom move gallery caption fullscreen',
 
         plugins: [
@@ -72,7 +72,6 @@ function App() {
             }],
         ],
       });
-      viewer.zoom(0);
       viewer.overlay.hide()
       return () => {
         viewer.destroy();
